@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temukan Pekerjaan - BISAKERJA</title>
+    <link rel="stylesheet" href="tampilanawal.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="tampilanawal.html" class="logo-text">BISAKERJA</a>
+        </div>
+        <div class="navbar-center">
+            <a href="tampilanawal.html" class="active">Beranda</a>
+            <a href="tampilanrekomendasi.html">Pekerjaan</a>
+            <a href="tampilannotifikasi.html">Notifikasi</a>
+            <a href="tampilanprofil.html">Profil Saya</a>
+        </div>
+        
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            
+            <div id="logged-out-view">
+                <a href="tampilandaftar.html" class="btn btn-blue">Daftar</a>
+                <a href="tampilanlogin.html" class="btn btn-white">Masuk</a>
+            </div>
+
+            <div id="logged-in-view">
+                <img src="https://placehold.co/40x40/222222/FFFFFF/png?text=SP" alt="Profile Picture" class="nav-profile-pic">
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <h1 class="main-title">Temukan pekerjaan yang tepat untuk Anda</h1>
+        
+        <div class="search-main">
+            <input type="text" placeholder="Cari">
+        </div>
+
+        <h3 class="section-title">Telusuri berdasarkan kategori pekerjaan</h3>
+        
+        <div class="job-categories-grid">
+            <div class="job-card">
+                <img src="https://placehold.co/200x150/f0f8ff/333333?text=Pemasaran" alt="Pemasaran">
+                <p>Pemasaran</p>
+            </div>
+            <div class="job-card">
+                <img src="https://placehold.co/200x150/fff0f0/333333?text=Penjualan" alt="Penjualan">
+                <p>Penjualan</p>
+            </div>
+            <div class="job-card">
+                <img src="https://placehold.co/200x150/f0fff0/333333?text=Keuangan" alt="Keuangan">
+                <p>Keuangan</p>
+            </div>
+            <div class="job-card">
+                <img src="https://placehold.co/200x150/fffaf0/333333?text=SDM" alt="Sumber Daya Manusia">
+                <p>Sumber Daya Manusia</p>
+            </div>
+            <div class="job-card">
+                <img src="https://placehold.co/200x150/f0f0ff/333333?text=CS" alt="Layanan Pelanggan">
+                <p>Layanan Pelanggan</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cek status login dari localStorage
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+            
+            // Sembunyikan semua elemen dulu untuk menghindari kedipan
+            loggedOutView.style.display = 'none';
+            loggedInView.style.display = 'none';
+
+            if (isLoggedIn === 'true') {
+                // Jika sudah login, tampilkan gambar profil
+                loggedInView.style.display = 'flex';
+            } else {
+                // Jika belum login, tampilkan tombol Daftar & Masuk
+                loggedOutView.style.display = 'flex';
+            }
+
+            // Fungsi untuk Logout saat gambar profil di klik
+            const profilePic = document.querySelector('#logged-in-view .nav-profile-pic');
+            if (profilePic) {
+                profilePic.style.cursor = 'pointer';
+                profilePic.addEventListener('click', function() {
+                    const userConfirmation = confirm('Apakah Anda yakin ingin keluar?');
+                    
+                    if (userConfirmation) {
+                        localStorage.removeItem('isLoggedIn');
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

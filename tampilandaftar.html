@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat akun Anda - Bisakerja</title>
+    <link rel="stylesheet" href="tampilandaftar.css"> 
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="tampilanawal.html" class="logo-text">BISAKERJA</a>
+        </div>
+    </header>
+    <div class="container">
+        <h2 class="form-title">Buat akun Anda</h2>
+        
+        <form action="#" method="post" id="register-form">
+            <div class="form-group">
+                <label for="namaLengkap">Nama Lengkap</label>
+                <input type="text" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="alamatEmail">Alamat Email</label>
+                <input type="email" id="alamatEmail" name="alamatEmail" placeholder="Alamat Email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="kataSandi">Kata Sandi</label>
+                <input type="password" id="kataSandi" name="kataSandi" placeholder="Kata Sandi" required>
+            </div>
+
+            <div class="user-type-group">
+                <button type="button">Saya seorang pencari kerja</button>
+                <button type="button">Saya seorang perekrut</button>
+            </div>
+
+            <button type="submit" class="btn-register">Daftar</button>
+        </form>
+
+        <p class="login-link">
+            Sudah punya akun? <a href="tampilanlogin.html">Masuk</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            // Mencegah form dari pengiriman standar
+            event.preventDefault();
+
+            // 1. Simulasikan pendaftaran berhasil dengan menyimpan status login
+            //    di penyimpanan lokal browser.
+            localStorage.setItem('isLoggedIn', 'true');
+
+            // 2. Arahkan pengguna ke halaman awal (index.html)
+            window.location.href = 'tampilanawal.html';
+        });
+    </script>
+
+</body>
+</html>
